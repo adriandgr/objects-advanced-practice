@@ -37,6 +37,11 @@ var companySalesData = [
 
 // *total sales* and *total tax*, grouped by company.
 
+function reducer(array) {
+  return array.reduce(function(pre, cur) {
+    return pre + cur;
+  }, 0);
+}
 
 function calculateSalesTax(salesData, taxRates) {
   let taxCalc = {};
@@ -51,10 +56,8 @@ function calculateSalesTax(salesData, taxRates) {
 
       };
     }
-    let totalSales = 0;
-    for (let prop in company.sales){
-      totalSales += company.sales[prop];
-    }
+    let totalSales = reducer(company.sales);
+
     let totalTax = totalSales * taxRates[prov];
     taxCalc[companyName].totalTaxes += totalTax;
     taxCalc[companyName].totalSales += totalSales;
