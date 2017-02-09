@@ -37,50 +37,35 @@ var companySalesData = [
 
 // *total sales* and *total tax*, grouped by company.
 
+
 function calculateSalesTax(salesData, taxRates) {
   /* Implement your code here
 
-  get
-
   */
-}
-
-function generateOuterObject(salesData) {
-  var table = {}
-  totals = addSales(salesData);
-  for (var i = 0; i < salesData.length; i++) {
-    for ( item in salesData[i]) {
-      if ( item === "name") {
-        var companyTotal = totals.shift();
-        table[salesData[i][item]] = {
-          totalSales: companyTotal,
-          totalTaxes: null
-        }
-      }
+  let taxCalc = {};
+  for (let data in salesData) {
+    let company = salesData[data]
+    let companyName = company.name;
+    if(!taxCalc.hasOwnProperty(companyName)) {
+      taxCalc[companyName] = {
+        totalTaxes: 0,
+        totalSales: 0,
+      };
     }
-  }
-  console.log(table)
-  return table;
-}
-
-function addSales(salesData) {
-  var totals = []
-  for (var i = 0; i < salesData.length; i++) {
-    for ( item in salesData[i]) {
-      if ( item === "sales") {
-        totals.push(salesData[i][item].reduce((a, b) => a + b));
-      }
+    let totalSales = 0;
+    for (let prop in company.sales){
+      console.log('prop >>', prop);
+      console.log('company >>', company.sales);
+      // console.log('company[prop] >>', company[prop])
     }
+    // console.log('taxCalc >>', taxCalc);
   }
-  console.log('table', totals)
-  return totals;
+  return taxCalc;
 }
 
-generateOuterObject(companySalesData);
 
-addSales(companySalesData)
 
-//var results = calculateSalesTax(companySalesData, salesTaxRates);
+var results = calculateSalesTax(companySalesData, salesTaxRates);
 
 
 
