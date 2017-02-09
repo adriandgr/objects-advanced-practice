@@ -22,16 +22,27 @@ var companySalesData = [
   }
 ];
 
+/* Expected Results:
+{
+  Telus: {
+    totalSales: 1300
+    totalTaxes: 144
+  },
+  Bombardier: {
+    totalSales: 800,
+    totalTaxes: 40
+  }
+}
+*/
+
 // *total sales* and *total tax*, grouped by company.
 
 function calculateSalesTax(salesData, taxRates) {
-  // Implement your code here
-  for (var i = 0; i < salesData.length; i++) {
-    for ( saleItem in salesData[i]) {
-      console.log("\nsaleItem", saleItem);
-      console.log("salesData[i]", salesData[i][saleItem]);
-    }
-  }
+  /* Implement your code here
+
+  get
+
+  */
 }
 
 function generateOuterObject(salesData) {
@@ -48,8 +59,6 @@ function generateOuterObject(salesData) {
       }
     }
   }
-
-
   console.log(table)
   return table;
 }
@@ -68,20 +77,10 @@ function addSales(salesData) {
 }
 
 generateOuterObject(companySalesData);
-//addSales(companySalesData)
+
+addSales(companySalesData)
 
 //var results = calculateSalesTax(companySalesData, salesTaxRates);
 
-/* Expected Results:
-{
-  Telus: {
-    totalSales: 1300
-    totalTaxes: 144
-  },
-  Bombardier: {
-    totalSales: 800,
-    totalTaxes: 40
-  }
-}
-*/
+
 
