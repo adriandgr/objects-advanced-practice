@@ -39,33 +39,31 @@ var companySalesData = [
 
 
 function calculateSalesTax(salesData, taxRates) {
-  /* Implement your code here
-
-  */
   let taxCalc = {};
   for (let data in salesData) {
     let company = salesData[data]
     let companyName = company.name;
+    let prov = company.province;
     if(!taxCalc.hasOwnProperty(companyName)) {
       taxCalc[companyName] = {
-        totalTaxes: 0,
         totalSales: 0,
+        totalTaxes: 0
+
       };
     }
     let totalSales = 0;
     for (let prop in company.sales){
-      console.log('prop >>', prop);
-      console.log('company >>', company.sales);
-      // console.log('company[prop] >>', company[prop])
+      totalSales += company.sales[prop];
     }
-    // console.log('taxCalc >>', taxCalc);
+    let totalTax = totalSales * taxRates[prov];
+    taxCalc[companyName].totalTaxes += totalTax;
+    taxCalc[companyName].totalSales += totalSales;
+
   }
   return taxCalc;
 }
 
-
-
 var results = calculateSalesTax(companySalesData, salesTaxRates);
 
-
+console.log(results);
 
